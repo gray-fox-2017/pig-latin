@@ -8,12 +8,14 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-rl.question("Input sentence: ", (input) => {
-  console.log("Answer: ", pigLatin(input));
-});
+rl.setPrompt("Input sentence: ");
+rl.prompt();
 
-rl.on("close", () => {
-  console.log("bye");
+rl.on('line', (input) => {
+  console.log("Pig Latin:", pigLatin(input));
+  rl.prompt();
+}).on('close', () => {
+  console.log("\nbye");
   process.exit(0);
 });
 

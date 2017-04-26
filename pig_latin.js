@@ -8,12 +8,11 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-rl.setPrompt("Input sentence: ");
-rl.prompt();
+rl.question("Input sentence: ", (input) => {
+  console.log("Answer: ", pigLatin(input));
+});
 
-rl.on('line', (input) => {
-  console.log(pigLatin(input));
-}).on('close', () => {
+rl.on("close", () => {
   console.log("bye");
   process.exit(0);
 });
@@ -27,9 +26,9 @@ function pigLatin(sentence) {
     let index = value.search(/[aiueo]/i);
 
     if (index === 0) {
-      arrayPigLatin.push(value);
+      arrayPigLatin.push(value.slice(index) + "ay");
     } else {
-    arrayPigLatin.push(value.slice(index) + value.slice(0, index) + "ay");
+      arrayPigLatin.push(value.slice(index) + value.slice(0, index) + "ay");
     }
   });
 

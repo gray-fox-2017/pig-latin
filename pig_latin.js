@@ -11,15 +11,17 @@ const rl = readline.createInterface({
 
 
 function pigLatin(word){
-  let vowel = /[aiueo]/gi
+  var vowel = /[aiueo]/gi
 
   if (vowel === null){
     return word + "ay"
   }
 
-  if(word.charAt(0) === vowel){
-    return word
+  if (word.charAt(0) === "a" || word.charAt(0) === "i" || word.charAt(0) === "u" || word.charAt(0) === "e" || word.charAt(0) === "O"
+    || word.charAt(0) === "A" || word.charAt(0) === "I" || word.charAt(0) === "U" || word.charAt(0) === "E" || word.charAt(0) === "O"){
+      return word;
   }
+
   else {
     let firstvowel = word.indexOf(word.match(vowel)[0]);
     var pig = word.substr(firstvowel) + word.substr(0,firstvowel) + "ay";

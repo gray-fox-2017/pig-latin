@@ -19,11 +19,10 @@ rl.on('close', function() {
 });
 
 function pigLatin(sentence) {
-  let isThereVowel = [];
-  let pigLatinized = "";
-  isThereVowel.push(sentence.match(/[aiueo]/i).index);
+  let isThereVowel = sentence.search(/[aiueo]/i);
   console.log(isThereVowel);
-  if (isThereVowel.length > 0) {
+  let pigLatinized = "";
+  if (isThereVowel>=0) {
     let indexVowel = sentence.match(/[aiueo]/i).index;
     pigLatinized = sentence.substring(indexVowel) + sentence.substring(0,indexVowel) + "ay";
   }
@@ -32,6 +31,3 @@ function pigLatin(sentence) {
   } 
   return pigLatinized
 }
-
-
-

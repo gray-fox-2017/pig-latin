@@ -18,16 +18,28 @@ rl.on('close', function() {
     process.exit(0);
 });
 
-function pigLatin(sentence) {
-  let isThereVowel = sentence.search(/[aiueo]/i);
-  console.log(isThereVowel);
+function pigLatin (sentence) {
+  let arrSentence = sentence.split(" ");
+  for (let i=0; i<arrSentence.length; i++) {
+    arrSentence[i] = pigLatine(arrSentence[i]);
+  }
+  return arrSentence.join(" ");
+}
+
+function pigLatine(word) {
+  let isThereVowel = word.search(/[aiueo]/i);
   let pigLatinized = "";
   if (isThereVowel>=0) {
-    let indexVowel = sentence.match(/[aiueo]/i).index;
-    pigLatinized = sentence.substring(indexVowel) + sentence.substring(0,indexVowel) + "ay";
+    let indexVowel = word.match(/[aiueo]/i).index;
+    if (indexVowel === 0) {
+      pigLatinized = word;
+    }
+    else{
+      pigLatinized = word.substring(indexVowel) + word.substring(0,indexVowel) + "ay";
+    }
   }
   else {
-    pigLatinized = sentence + "ay";
+    pigLatinized = word + "ay";
   } 
   return pigLatinized
 }

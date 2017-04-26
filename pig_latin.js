@@ -26,8 +26,11 @@ function pigLatin(sentence) {
     } else {
       let vowel=arr[i].match(/[aiueo]\w+/g);
       let cons=arr[i].replace(vowel,'')
-      if(vowel!==null) arr[i]=vowel+cons+'ay';
-      arr[i]+='ay';
+      if(vowel!==null) {
+        arr[i]=vowel+cons+'ay';
+      } else {
+        arr[i]+='ay';
+      }
     }
   }
   return arr.join(' ');

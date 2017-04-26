@@ -19,10 +19,16 @@ rl.on('close', function() {
 });
 
 function pigLatin(sentence) {
-  if(/^[aiueo]\w+/g.test(sentence)) return sentence;
-  let vowel=sentence.match(/[aiueo]\w+/g);
-  let cons=sentence.replace(vowel,'')
-  return vowel+cons+'ay';
+  let arr=sentence.split(' ');
+  for(let i=0;i<arr.length;i++) {
+    if(/^[aiueo]\w+/g.test(arr[i])) {
+      arr[i]=arr[i];
+    } else {
+      let vowel=arr[i].match(/[aiueo]\w+/g);
+      let cons=arr[i].replace(vowel,'')
+      if(vowel!==null) arr[i]=vowel+cons+'ay';
+      arr[i]+='ay';
+    }
+  }
+  return arr.join(' ');
 }
-
-// pigLatin('tes')

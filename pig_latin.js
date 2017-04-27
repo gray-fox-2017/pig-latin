@@ -21,14 +21,14 @@ function pigLatin(sentence) {
   var kons = /[^aioue]*/i;
   var bukan = [];
   for (var i = 0; i < sentence.length; i++) {
-  if (vowel.test(sentence[i][0]) === true) {
-    bukan.push(sentence[i]);
-  }
-  else {
-    var hilang = sentence[i].replace(kons, "");
-    var match = sentence[i].match(kons);
-    bukan.push(hilang + match + 'ay');
-  }
+    if (vowel.test(sentence[i][0]) === true) {
+      bukan.push(sentence[i]);
+    }
+    else {
+      var hilang = sentence[i].replace(kons, "");
+      var match = sentence[i].match(kons);
+      bukan.push(hilang + match + 'ay');
+    }
   }
   return bukan.join(' ');
   }

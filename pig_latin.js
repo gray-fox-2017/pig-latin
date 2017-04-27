@@ -28,7 +28,7 @@ function pigLatin(sentence) {
     let index = value.search(/[aiueo]/i);
 
     if (index === 0) {
-      arrayPigLatin.push(value.slice(index) + "ay");
+      arrayPigLatin.push(value.slice(index));
     } else {
       arrayPigLatin.push(value.slice(index) + value.slice(0, index) + "ay");
     }

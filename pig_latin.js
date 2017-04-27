@@ -1,4 +1,4 @@
-cvccf"use strict"
+"use strict"
 
 //use readline to fix this challenge
 const readline = require('readline');
@@ -29,13 +29,14 @@ function pigLatin(sentence) {
       strArr.push(lineArr[i]);
       // console.log(str);
     } else if (notVowelRegx.test(lineArr[i])) {
-      let nextWord = lineArr[i].match();
-      let finalWord = nextWord + lineArr[i].charAt(0) + "ay";
+      let firstWord = lineArr[i].replace(notVowelRegx, "");
+      let backWord = lineArr[i].match(notVowelRegx)[0];
+      let finalWord = firstWord + backWord + "ay";
       strArr.push(finalWord);
       // console.log(str);
     }
   }
-  finalWord = str.join(" ");
+  finalWord = strArr.join(" ");
   return finalWord;
 
 }

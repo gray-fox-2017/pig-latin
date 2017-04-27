@@ -28,18 +28,23 @@ function convertAll(sentence){
 }
 
 function pigLatin(str) {
-  let arrStr = str.split('');
-  let len = arrStr.length;
-  let itemp = 0;
+  let is_kons = str.search(/[aiueo]/i); //tes kons ato bukan
+  let has_kons = str.search(/[^aiueo]/i);
+  let idx_v = str.search(/[aiueo]/gi); //cari index pertama vowel
+  let len = str.length;
+  if (is_kons === -1) str += 'ay';
+  else if (has_kons !== -1 && idx_v !== -1) {
 
-  for (let i = 0 ; i < len; i++) {
-    let tchar = str[i];
-    if (tchar.search(/[aiueo]/i) === -1) {
-      arrStr.splice(itemp,1);
-      arrStr.push(tchar+'ay');
-    } else {
-      itemp += 1;
-    }
+    let c_v = str.charAt(idx_v);
+    let n_len = (idx_v === len-1)? 0 : idx_v;
+    // console.log('idxV'+idx_v);
+    // console.log('n_len '+n_len);
+  	// console.log('1 '+str.substr(idx_v));
+  	// console.log('2 '+str.substr(0,idx_v));
+    str = `${str.substr(idx_v)}${str.substring(0,idx_v)}ay`;
+
   }
-  return arrStr.join('');
+
+
+  return str;
 }

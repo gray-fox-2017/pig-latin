@@ -20,16 +20,17 @@ rl.on('close', function() {
 
 function pigLatin(sentence) {
   let arr=sentence.split(' ');
+
   for(let i=0;i<arr.length;i++) {
-    if(/^[aiueo]\w+/g.test(arr[i])) {
-      arr[i]=arr[i];
-    } else {
-      let vowel=arr[i].match(/[aiueo]\w+/g);
-      let cons=arr[i].replace(vowel,'')
+    let word = arr[i]
+    let firstCharacterIsVowel = /^[aiueo]/g.test(word)
+    if(!firstCharacterIsVowel){
+      let vowel = word.match(/[aiueo]\w+/g);
+      let cons  = word.replace(vowel,'')
       if(vowel!==null) {
-        arr[i]=vowel+cons+'ay';
+        word = vowel+cons+'ay';
       } else {
-        arr[i]+='ay';
+        word += 'ay';
       }
     }
   }

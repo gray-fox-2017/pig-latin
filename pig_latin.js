@@ -28,13 +28,10 @@ function convertAll(sentence){
 }
 
 function pigLatin(str) {
-  let is_kons = str.search(/[aiueo]/i); //tes kons ato bukan
   let idx_v = str.search(/[aiueo]/gi); //cari index pertama vowel
   let len = str.length;
-  if (is_kons === -1) str += 'ay';
-  else if (idx_v !== -1) {
-    let c_v = str.charAt(idx_v);
-    let n_len = (idx_v === len-1)? 0 : idx_v;
+  if (idx_v === -1) str += 'ay';
+  else if (idx_v !== 0) {
     str = `${str.substr(idx_v)}${str.substring(0,idx_v)}ay`;
 
   }

@@ -10,10 +10,17 @@ const rl = readline.createInterface({
 
 function print(){
   rl.prompt()
+
 rl.on('line', (kalimat) =>{
   console.log(pigLatin(kalimat));
-  rl.close()
+  rl.prompt()
+  //rl.close();
 });
+
+rl.on('close',()=>{
+  console.log('bye-bye');
+  process.exit(0);
+})
 }
 
 print();
@@ -35,7 +42,6 @@ function cek_word(word){
     if(vowel.index == 0){
       return word;
     }else {
-
       return word.substr(vowel.index)+word.substr(0,vowel.index)+'ay';
     }
   }

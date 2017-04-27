@@ -3,33 +3,43 @@
 //use readline to fix this challenge
 const readline = require('readline');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
 function pigLatin(sentence) {
   // Your pig latin implementation here...
 
-    rl.setPrompt('please write something text : ');
-    rl.prompt();
-
-    rl.on('line',(TextTulisan) => {
-        TextTulisan = TextTulisan.split(" ");
+        sentence = sentence.split(" ");
         var arrBaru = [];
-        for(var i = 0; i<TextTulisan.length; i++) {
-            var result = TextTulisan[i].match(/[aiueoAIUEO]/);
-            var txtPotong = TextTulisan[i].substring(0, result.index);
-            if (result.index != 0) {
-                TextTulisan[i] = TextTulisan[i].slice(result.index);
-                arrBaru.push("" + TextTulisan[i] + "" + txtPotong + "ay");
+        for(var i = 0; i<sentence.length; i++) {
+            var result = sentence[i].match(/[aiueoAIUEO]/);
+            if(result == null){
+                arrBaru.push(sentence[i]);
             }
             else {
-                arrBaru.push(TextTulisan[i]);
+                var txtPotong = sentence[i].substring(0, result.index);
+                if (result.index != 0) {
+                    sentence[i] = sentence[i].slice(result.index);
+                    arrBaru.push("" + sentence[i] + "" + txtPotong + "ay");
+                }
+                else {
+                    arrBaru.push(sentence[i]);
+                }
             }
         }
         console.log(arrBaru.join(" "));
-        rl.prompt();
+
+}
+
+function print(){
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.setPrompt('please write something text : ');
+    rl.prompt();
+    rl.on('line',(TextTulisan) => {
+        pigLatin(TextTulisan);
+    rl.prompt();
 
     }).on('close', () =>{
         console.log("Bye bye");
@@ -38,4 +48,4 @@ function pigLatin(sentence) {
 }
 
 
-pigLatin();
+print();

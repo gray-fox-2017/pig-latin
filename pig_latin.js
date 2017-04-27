@@ -22,12 +22,11 @@ function pigLatin(sentence) {
   let konsonan = /[^aiueo]*/i;
   let hasil = [];
   for (let i = 0; i <sentence.length; i++) {
-    if (vowels.test(sentence[i][0]) == true) {
+    if (vowels.test(sentence[i].substring(0,1)) == true) {
       hasil.push(sentence[i]);
     } else {
       let toVowels = sentence[i].replace(konsonan, ""); //menjadikan konsonan menjadi vowels dengan mengganti nilai konsonan dengan str blank ""
       let toKonsonan = sentence[i].match(konsonan); // me match nilai konsonan
-
       hasil.push(toVowels + toKonsonan + 'ay');
     }
 

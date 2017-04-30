@@ -6,6 +6,7 @@ const readline = require('readline');
 
 function pigLatin(sentence) {
   // Your pig latin implementation here...
+    //Done
 
         sentence = sentence.split(" ");
         var arrBaru = [];

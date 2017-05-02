@@ -18,6 +18,9 @@ function pigLatin(sentence) {
     for(var i=0; i<arr.length; i++){
       if (/^[aeiou]/.test(arr[i])){
         newWord.push(arr[i]);
+      } else if (/([b-df-hj-np-tv-z])\1{2,}/.test(arr[i])){
+        var word = arr[i] + 'ay.'
+        newWord.push(word)
       } else {
         var consonants = arr[i].match(/.+?(?=[aiueo])/)[0];
         var word = arr[i].match(/[aiueo].*$/)[0] + consonants + 'ay.';
